@@ -119,8 +119,8 @@ def main():
                            recall_vs_file=rec,
                            qps_single=qps_single, qps_batch=qps_batch))
 
-    pd.DataFrame(rows).to_csv("results/results_part1.csv", index=False)
-
+    out = "results/results_part1_quick.csv" if args.quick else "results/results_part1.csv"
+    pd.DataFrame(rows).to_csv(out, index=False)
 
 if __name__ == "__main__":
     main()

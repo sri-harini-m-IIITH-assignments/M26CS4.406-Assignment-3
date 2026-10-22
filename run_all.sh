@@ -3,10 +3,11 @@ set -e
 
 mkdir -p results
 
-echo "=== Running Unit Tests ==="
-python part1/faiss_exact.py --test
+echo "Running Part 1:" 
+python part1/faiss_exact.py
 
-echo "Running in Quick Mode..."
-python part1/faiss_exact.py --quick
+echo "Running Part 2:"
+python part2/benchmark.py
+python part2/analyze.py
 
-echo "All tasks completed successfully! Results saved to results/results_part1.csv. Run the full"
+echo "All tasks completed successfully!"
