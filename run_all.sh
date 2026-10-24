@@ -16,4 +16,8 @@ echo "Running Part 3:"
 python part3/scaling.py
 echo "Part 3 done." 
 
+echo "Running Part 4:" 
+python part4/memory_limits.py
+echo "Part 4 done." 
+
 echo "All tasks completed successfully!"
