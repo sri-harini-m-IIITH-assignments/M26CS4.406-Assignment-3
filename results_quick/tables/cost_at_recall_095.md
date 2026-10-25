@@ -1,0 +1,10 @@
+| dataset | index | config | search param | recall | build time (s) | index size (MB) | bytes/vector |
+|---|---|---|---|---|---|---|---|
+| glove | HNSW | M=32,efC=100 | efSearch=160 | 0.953 | 2.8 | 67 | 672 |
+| glove | IVF-Flat | nlist=256 | nprobe=64 | 0.951 | 4.7 | 41 | 409 |
+| glove | IVF-PQ | nlist=256,m=25 | nprobe=64 | 0.615 (max, <0.95) | 18.0 | 4 | 35 |
+| glove | Exact (flat) | IndexFlatL2 | - | 1.000 | ~0 | 40 | 400 |
+| sift | HNSW | M=16,efC=100 | efSearch=40 | 0.964 | 2.3 | 66 | 656 |
+| sift | IVF-Flat | nlist=1024 | nprobe=32 | 0.967 | 7.3 | 53 | 525 |
+| sift | IVF-PQ | nlist=256,m=32 | nprobe=64 | 0.774 (max, <0.95) | 21.7 | 4 | 43 |
+| sift | Exact (flat) | IndexFlatL2 | - | 1.000 | ~0 | 51 | 512 |

@@ -64,11 +64,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true")
     args = ap.parse_args()
-    sfx = "_quick" if args.quick else ""
-    part1_path = os.path.join(RESULTS_DIR, f"results_part1{sfx}.csv")
-    part2_path = os.path.join(RESULTS_DIR, f"results_part2{sfx}.csv")
-    merged_path = os.path.join(RESULTS_DIR, f"results{sfx}.csv")
-
+    suffix = "_quick" if args.quick else ""
+    output_dir = os.path.join(ROOT, "results_quick") if args.quick else RESULTS_DIR
+    part1_path = os.path.join(output_dir, f"results_part1{suffix}.csv")
+    part2_path = os.path.join(output_dir, f"results_part2{suffix}.csv")
+    merged_path = os.path.join(output_dir, f"results{suffix}.csv")
     parts = [pd.read_csv(p) for p in (part1_path, part2_path) if os.path.exists(p)]
     df = pd.concat(parts, ignore_index=True)
     df.to_csv(merged_path, index=False)
@@ -77,8 +77,8 @@ def main():
     exact = df[df["index"] == "exact"]
 
     qps_rows, cost_rows = [], []
-    figdir = os.path.join(RESULTS_DIR, "figures")
-    tdir = os.path.join(RESULTS_DIR, "tables")
+    figdir = os.path.join(output_dir, "figures")
+    tdir = os.path.join(output_dir, "tables")
     os.makedirs(figdir, exist_ok=True)
 
     for ds in sorted(p2["dataset"].unique()):

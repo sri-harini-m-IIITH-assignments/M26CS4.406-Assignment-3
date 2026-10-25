@@ -72,7 +72,7 @@ def run(cfg, out):
             gc.collect()
 
 
-def analyze(out, suffix):
+def analyze(out, suffix, results_dir):
     df = pd.read_csv(out)
     df = df[(df["part"] == 3) & (df["split"] == "report")]
     rows = []
@@ -106,7 +106,7 @@ def analyze(out, suffix):
                          "search param": r["search_param"], "build time (s)": f"{r['build_time_s']:.1f}",
                          "log-log slope": f"{slopes.get(r['index'], float('nan')):.2f}"})
     tab = pd.DataFrame(out_rows)
-    an.save_table(tab, os.path.join(RESULTS_DIR, "tables" + suffix), "scaling")
+    an.save_table(tab, os.path.join(results_dir, "tables" + suffix), "scaling")
     print(an.md_table(tab))
 
     fig, ax = plt.subplots(figsize=(5.6, 4.0))
@@ -122,7 +122,7 @@ def analyze(out, suffix):
     ax.set_title("SIFT: speed at recall 0.95 vs dataset size")
     ax.grid(True, which="both", alpha=0.25); ax.legend()
     fig.tight_layout()
-    figdir = os.path.join(RESULTS_DIR, "figures" + suffix)
+    figdir = os.path.join(results_dir, "figures" + suffix)
     os.makedirs(figdir, exist_ok=True)
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(figdir, f"scaling.{ext}"), dpi=200)
@@ -132,13 +132,16 @@ def analyze(out, suffix):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true")
-    ap.add_argument("--analyze-only", action="store_true")
     args = ap.parse_args()
     cfg = QUICK if args.quick else FULL
-    out = os.path.join(RESULTS_DIR, f"results_part3{cfg['suffix']}.csv")
-    if not args.analyze_only:
-        run(cfg, out)
-    analyze(out, cfg["suffix"])
+    results_dir = os.path.join(ROOT, "results_quick") if args.quick else RESULTS_DIR
+    out = os.path.join(results_dir, f"results_part3{cfg['suffix']}.csv")
+    run(cfg, out)
+    analyze(out, cfg["suffix"], results_dir)
+    merged = os.path.join(results_dir, f"results{cfg['suffix']}.csv")
+    parts = [pd.read_csv(merged)] if os.path.exists(merged) else []
+    parts.append(pd.read_csv(out))
+    pd.concat(parts, ignore_index=True).to_csv(merged, index=False)
     print(f"Part 3 done. Results in {out}")
 
 

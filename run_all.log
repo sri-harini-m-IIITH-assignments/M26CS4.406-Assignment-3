@@ -1,0 +1,593 @@
+Running Part 1.
+sift: tie-aware recall@10 = 1.0000, id-only = 0.9993
+One at a time: 25.9 QPS, batch: 84.5 QPS
+glove: tie-aware recall@10 = 1.0000, id-only = 1.0000
+One at a time: 26.6 QPS, batch: 88.7 QPS
+Part 1 done. Results in results/results_part1.csv
+Part 1 done.
+Running Part 2:
+=== sift ===
+  build hnsw M=8,efC=200 ...
+  built in 25.6s, 592.6 MB (592.6 B/vec)
+    tune    efSearch=10    recall=0.5599 qps=   4591.6
+    tune    efSearch=16    recall=0.6567 qps=  13604.1
+    tune    efSearch=24    recall=0.7335 qps=  11574.3
+    tune    efSearch=32    recall=0.7833 qps=  10493.7
+    tune    efSearch=48    recall=0.8487 qps=   8253.0
+    tune    efSearch=64    recall=0.8831 qps=   7122.5
+    tune    efSearch=96    recall=0.9242 qps=   5148.0
+    tune    efSearch=128   recall=0.9476 qps=   4099.8
+    tune    efSearch=192   recall=0.9668 qps=   2903.5
+    tune    efSearch=256   recall=0.9752 qps=   2193.5
+    report efSearch=10    recall=0.5988 qps=  23306.2
+    report efSearch=16    recall=0.6985 qps=  21484.5
+    report efSearch=24    recall=0.7745 qps=  15987.0
+    report efSearch=32    recall=0.8209 qps=  13343.9
+    report efSearch=48    recall=0.8748 qps=  10508.5
+    report efSearch=64    recall=0.9053 qps=   7970.8
+    report efSearch=96    recall=0.9388 qps=   5707.6
+    report efSearch=128   recall=0.9574 qps=   4320.3
+    report efSearch=192   recall=0.9750 qps=   3084.7
+    report efSearch=256   recall=0.9832 qps=   2382.6
+  build hnsw M=16,efC=200 ...
+  built in 38.7s, 656.3 MB (656.3 B/vec)
+    tune    efSearch=10    recall=0.7014 qps=  21522.5
+    tune    efSearch=16    recall=0.7937 qps=  16610.5
+    tune    efSearch=24    recall=0.8603 qps=  12383.0
+    tune    efSearch=32    recall=0.9016 qps=   9914.9
+    tune    efSearch=48    recall=0.9434 qps=   7233.9
+    tune    efSearch=64    recall=0.9644 qps=   5878.1
+    tune    efSearch=96    recall=0.9827 qps=   4133.5
+    report efSearch=10    recall=0.7308 qps=  23013.2
+    report efSearch=16    recall=0.8188 qps=  16847.2
+    report efSearch=24    recall=0.8828 qps=  13521.0
+    report efSearch=32    recall=0.9182 qps=  10326.7
+    report efSearch=48    recall=0.9533 qps=   7793.8
+    report efSearch=64    recall=0.9712 qps=   6175.7
+    report efSearch=96    recall=0.9861 qps=   4284.6
+  build hnsw M=32,efC=200 ...
+  built in 44.3s, 784.1 MB (784.1 B/vec)
+    tune    efSearch=10    recall=0.7643 qps=  16515.9
+    tune    efSearch=16    recall=0.8463 qps=  12281.1
+    tune    efSearch=24    recall=0.8984 qps=   9522.9
+    tune    efSearch=32    recall=0.9323 qps=   7660.2
+    tune    efSearch=48    recall=0.9637 qps=   5525.0
+    tune    efSearch=64    recall=0.9761 qps=   4294.6
+    report efSearch=10    recall=0.7839 qps=  16570.3
+    report efSearch=16    recall=0.8653 qps=  12752.6
+    report efSearch=24    recall=0.9155 qps=   9634.5
+    report efSearch=32    recall=0.9432 qps=   7991.6
+    report efSearch=48    recall=0.9711 qps=   5692.7
+    report efSearch=64    recall=0.9827 qps=   4620.1
+  build ivf_flat nlist=1024 ...
+  built in 13.3s, 520.5 MB (520.5 B/vec)
+    tune    nprobe=1     recall=0.3509 qps=  13752.5
+    tune    nprobe=2     recall=0.5140 qps=   7767.0
+    tune    nprobe=4     recall=0.6782 qps=   4336.2
+    tune    nprobe=8     recall=0.8207 qps=   2325.5
+    tune    nprobe=16    recall=0.9167 qps=   1203.2
+    tune    nprobe=32    recall=0.9767 qps=    620.5
+    report nprobe=1     recall=0.3906 qps=  13762.5
+    report nprobe=2     recall=0.5525 qps=   7860.8
+    report nprobe=4     recall=0.7112 qps=   4307.0
+    report nprobe=8     recall=0.8414 qps=   2325.0
+    report nprobe=16    recall=0.9330 qps=   1211.4
+    report nprobe=32    recall=0.9790 qps=    628.4
+  build ivf_flat nlist=4096 ...
+  built in 78.0s, 522.1 MB (522.1 B/vec)
+    tune    nprobe=1     recall=0.2659 qps=   9728.1
+    tune    nprobe=2     recall=0.3936 qps=   8432.3
+    tune    nprobe=4     recall=0.5466 qps=   6814.5
+    tune    nprobe=8     recall=0.6911 qps=   4880.1
+    tune    nprobe=16    recall=0.8171 qps=   3190.2
+    tune    nprobe=32    recall=0.9102 qps=   1881.5
+    tune    nprobe=64    recall=0.9682 qps=   1045.0
+    tune    nprobe=128   recall=0.9919 qps=    560.0
+    report nprobe=1     recall=0.2945 qps=   9686.0
+    report nprobe=2     recall=0.4348 qps=   8512.8
+    report nprobe=4     recall=0.5878 qps=   6788.2
+    report nprobe=8     recall=0.7291 qps=   4909.0
+    report nprobe=16    recall=0.8467 qps=   3169.5
+    report nprobe=32    recall=0.9271 qps=   1877.0
+    report nprobe=64    recall=0.9738 qps=   1038.4
+    report nprobe=128   recall=0.9934 qps=    559.9
+  build ivf_pq nlist=1024,m=16 ...
+  built in 23.0s, 24.7 MB (24.7 B/vec)
+    tune    nprobe=1     recall=0.2922 qps=  27222.0
+    tune    nprobe=2     recall=0.3921 qps=  18045.5
+    tune    nprobe=4     recall=0.4688 qps=  11171.1
+    tune    nprobe=8     recall=0.5233 qps=   6463.4
+    tune    nprobe=16    recall=0.5493 qps=   3494.0
+    tune    nprobe=32    recall=0.5606 qps=   1863.3
+    tune    nprobe=64    recall=0.5640 qps=    994.8
+    tune    nprobe=128   recall=0.5642 qps=    522.3
+    report nprobe=1     recall=0.3196 qps=  27346.3
+    report nprobe=2     recall=0.4173 qps=  18268.2
+    report nprobe=4     recall=0.4923 qps=  10879.1
+    report nprobe=8     recall=0.5371 qps=   6582.1
+    report nprobe=16    recall=0.5602 qps=   3530.0
+    report nprobe=32    recall=0.5694 qps=   1866.5
+    report nprobe=64    recall=0.5718 qps=    975.7
+    report nprobe=128   recall=0.5722 qps=    516.8
+  build ivf_pq nlist=1024,m=32 ...
+  built in 31.5s, 40.7 MB (40.7 B/vec)
+    tune    nprobe=1     recall=0.3261 qps=  19818.8
+    tune    nprobe=2     recall=0.4589 qps=  12162.1
+    tune    nprobe=4     recall=0.5730 qps=   7027.4
+    tune    nprobe=8     recall=0.6515 qps=   3877.9
+    tune    nprobe=16    recall=0.6948 qps=   2094.6
+    tune    nprobe=32    recall=0.7146 qps=   1102.5
+    tune    nprobe=64    recall=0.7201 qps=    567.0
+    tune    nprobe=128   recall=0.7203 qps=    291.9
+    report nprobe=1     recall=0.3593 qps=  19897.3
+    report nprobe=2     recall=0.4882 qps=  12753.4
+    report nprobe=4     recall=0.5961 qps=   7291.2
+    report nprobe=8     recall=0.6696 qps=   3928.5
+    report nprobe=16    recall=0.7105 qps=   2111.5
+    report nprobe=32    recall=0.7265 qps=   1111.2
+    report nprobe=64    recall=0.7321 qps=    575.3
+    report nprobe=128   recall=0.7329 qps=    295.1
+=== glove ===
+  build hnsw M=8,efC=200 ...
+  built in 32.8s, 568.8 MB (480.6 B/vec)
+    tune    efSearch=10    recall=0.3000 qps=  27623.3
+    tune    efSearch=16    recall=0.3737 qps=  21002.4
+    tune    efSearch=24    recall=0.4500 qps=  16262.8
+    tune    efSearch=32    recall=0.5058 qps=  13327.2
+    tune    efSearch=48    recall=0.5704 qps=  10175.2
+    tune    efSearch=64    recall=0.6155 qps=   7826.1
+    tune    efSearch=96    recall=0.6699 qps=   5780.6
+    tune    efSearch=128   recall=0.7062 qps=   4290.8
+    tune    efSearch=192   recall=0.7530 qps=   2911.4
+    tune    efSearch=256   recall=0.7765 qps=   2302.4
+    tune    efSearch=384   recall=0.8097 qps=   1566.3
+    tune    efSearch=512   recall=0.8270 qps=   1244.2
+    tune    efSearch=768   recall=0.8535 qps=    815.3
+    tune    efSearch=1024  recall=0.8694 qps=    598.4
+    report efSearch=10    recall=0.3033 qps=  27160.3
+    report efSearch=16    recall=0.3790 qps=  20077.3
+    report efSearch=24    recall=0.4461 qps=  16199.9
+    report efSearch=32    recall=0.4966 qps=  12591.6
+    report efSearch=48    recall=0.5642 qps=   9577.7
+    report efSearch=64    recall=0.6098 qps=   7400.5
+    report efSearch=96    recall=0.6671 qps=   5368.8
+    report efSearch=128   recall=0.7043 qps=   4408.3
+    report efSearch=192   recall=0.7456 qps=   3011.1
+    report efSearch=256   recall=0.7721 qps=   2363.5
+    report efSearch=384   recall=0.8043 qps=   1654.4
+    report efSearch=512   recall=0.8259 qps=   1258.5
+    report efSearch=768   recall=0.8501 qps=    820.8
+    report efSearch=1024  recall=0.8653 qps=    593.5
+  build hnsw M=16,efC=200 ...
+  built in 52.0s, 644.2 MB (544.3 B/vec)
+    tune    efSearch=10    recall=0.4705 qps=  18213.2
+    tune    efSearch=16    recall=0.5619 qps=  13703.0
+    tune    efSearch=24    recall=0.6336 qps=  10482.0
+    tune    efSearch=32    recall=0.6808 qps=   8214.6
+    tune    efSearch=48    recall=0.7329 qps=   6167.9
+    tune    efSearch=64    recall=0.7679 qps=   5065.9
+    tune    efSearch=96    recall=0.8116 qps=   3647.2
+    tune    efSearch=128   recall=0.8344 qps=   2963.5
+    tune    efSearch=192   recall=0.8660 qps=   2005.1
+    tune    efSearch=256   recall=0.8880 qps=   1695.2
+    tune    efSearch=384   recall=0.9110 qps=   1109.8
+    tune    efSearch=512   recall=0.9271 qps=    826.7
+    tune    efSearch=768   recall=0.9435 qps=    549.6
+    tune    efSearch=1024  recall=0.9543 qps=    407.8
+    report efSearch=10    recall=0.4778 qps=  20106.2
+    report efSearch=16    recall=0.5662 qps=  13605.0
+    report efSearch=24    recall=0.6338 qps=  11258.5
+    report efSearch=32    recall=0.6779 qps=   8498.2
+    report efSearch=48    recall=0.7316 qps=   6782.3
+    report efSearch=64    recall=0.7649 qps=   5196.5
+    report efSearch=96    recall=0.8052 qps=   3808.7
+    report efSearch=128   recall=0.8314 qps=   2955.4
+    report efSearch=192   recall=0.8627 qps=   2065.7
+    report efSearch=256   recall=0.8823 qps=   1608.2
+    report efSearch=384   recall=0.9077 qps=   1111.5
+    report efSearch=512   recall=0.9226 qps=    847.6
+    report efSearch=768   recall=0.9417 qps=    565.7
+    report efSearch=1024  recall=0.9521 qps=    420.6
+  build hnsw M=32,efC=200 ...
+  built in 77.0s, 795.5 MB (672.2 B/vec)
+    tune    efSearch=10    recall=0.5745 qps=  13399.4
+    tune    efSearch=16    recall=0.6610 qps=  10082.1
+    tune    efSearch=24    recall=0.7204 qps=   7709.0
+    tune    efSearch=32    recall=0.7585 qps=   5917.6
+    tune    efSearch=48    recall=0.8056 qps=   4564.4
+    tune    efSearch=64    recall=0.8304 qps=   3593.9
+    tune    efSearch=96    recall=0.8670 qps=   2506.4
+    tune    efSearch=128   recall=0.8887 qps=   1953.8
+    tune    efSearch=192   recall=0.9167 qps=   1394.0
+    tune    efSearch=256   recall=0.9336 qps=   1115.4
+    tune    efSearch=384   recall=0.9531 qps=    776.1
+    tune    efSearch=512   recall=0.9632 qps=    597.5
+    tune    efSearch=768   recall=0.9760 qps=    390.8
+    report efSearch=10    recall=0.5793 qps=  13052.0
+    report efSearch=16    recall=0.6585 qps=  10167.5
+    report efSearch=24    recall=0.7173 qps=   7488.9
+    report efSearch=32    recall=0.7560 qps=   6113.3
+    report efSearch=48    recall=0.8039 qps=   4538.2
+    report efSearch=64    recall=0.8321 qps=   3473.6
+    report efSearch=96    recall=0.8674 qps=   2468.6
+    report efSearch=128   recall=0.8899 qps=   1974.3
+    report efSearch=192   recall=0.9180 qps=   1404.1
+    report efSearch=256   recall=0.9353 qps=   1059.2
+    report efSearch=384   recall=0.9546 qps=    762.3
+    report efSearch=512   recall=0.9653 qps=    592.4
+    report efSearch=768   recall=0.9779 qps=    384.7
+  build ivf_flat nlist=1024 ...
+  built in 13.9s, 483.3 MB (408.4 B/vec)
+    tune    nprobe=1     recall=0.3840 qps=  12825.6
+    tune    nprobe=2     recall=0.5131 qps=   7695.2
+    tune    nprobe=4     recall=0.6212 qps=   4336.1
+    tune    nprobe=8     recall=0.7107 qps=   2399.7
+    tune    nprobe=16    recall=0.7864 qps=   1293.1
+    tune    nprobe=32    recall=0.8537 qps=    697.0
+    tune    nprobe=64    recall=0.9067 qps=    363.0
+    tune    nprobe=128   recall=0.9503 qps=    186.6
+    tune    nprobe=256   recall=0.9790 qps=     94.1
+    report nprobe=1     recall=0.3796 qps=  13330.9
+    report nprobe=2     recall=0.5071 qps=   7655.6
+    report nprobe=4     recall=0.6188 qps=   4335.2
+    report nprobe=8     recall=0.7117 qps=   2384.6
+    report nprobe=16    recall=0.7887 qps=   1286.5
+    report nprobe=32    recall=0.8520 qps=    681.5
+    report nprobe=64    recall=0.9064 qps=    362.9
+    report nprobe=128   recall=0.9495 qps=    187.5
+    report nprobe=256   recall=0.9796 qps=     94.1
+  build ivf_flat nlist=4096 ...
+  built in 80.3s, 484.5 MB (409.4 B/vec)
+    tune    nprobe=1     recall=0.3084 qps=  10950.4
+    tune    nprobe=2     recall=0.4289 qps=   9030.0
+    tune    nprobe=4     recall=0.5397 qps=   7150.0
+    tune    nprobe=8     recall=0.6314 qps=   4981.5
+    tune    nprobe=16    recall=0.7151 qps=   3264.7
+    tune    nprobe=32    recall=0.7849 qps=   1942.3
+    tune    nprobe=64    recall=0.8469 qps=   1076.2
+    tune    nprobe=128   recall=0.8952 qps=    594.4
+    tune    nprobe=256   recall=0.9382 qps=    314.7
+    report nprobe=1     recall=0.3049 qps=  11046.9
+    report nprobe=2     recall=0.4220 qps=   9323.1
+    report nprobe=4     recall=0.5287 qps=   7156.0
+    report nprobe=8     recall=0.6249 qps=   5050.5
+    report nprobe=16    recall=0.7084 qps=   3279.9
+    report nprobe=32    recall=0.7777 qps=   1935.1
+    report nprobe=64    recall=0.8386 qps=   1120.5
+    report nprobe=128   recall=0.8923 qps=    605.0
+    report nprobe=256   recall=0.9346 qps=    316.5
+  build ivf_pq nlist=1024,m=20 ...
+  built in 28.4s, 33.7 MB (28.4 B/vec)
+    tune    nprobe=1     recall=0.2878 qps=  14010.1
+    tune    nprobe=2     recall=0.3602 qps=  10690.6
+    tune    nprobe=4     recall=0.4147 qps=   7110.0
+    tune    nprobe=8     recall=0.4503 qps=   3753.4
+    tune    nprobe=16    recall=0.4759 qps=   2393.7
+    tune    nprobe=32    recall=0.4959 qps=   1335.5
+    tune    nprobe=64    recall=0.5079 qps=    718.3
+    tune    nprobe=128   recall=0.5145 qps=    376.9
+    tune    nprobe=256   recall=0.5171 qps=    190.8
+    report nprobe=1     recall=0.2870 qps=  14085.8
+    report nprobe=2     recall=0.3619 qps=  10504.2
+    report nprobe=4     recall=0.4182 qps=   6883.2
+    report nprobe=8     recall=0.4579 qps=   4219.0
+    report nprobe=16    recall=0.4849 qps=   2441.2
+    report nprobe=32    recall=0.5028 qps=   1333.6
+    report nprobe=64    recall=0.5147 qps=    718.8
+    report nprobe=128   recall=0.5226 qps=    374.8
+    report nprobe=256   recall=0.5263 qps=    189.8
+  build ivf_pq nlist=1024,m=25 ...
+  built in 28.4s, 39.6 MB (33.4 B/vec)
+    tune    nprobe=1     recall=0.3152 qps=  17258.4
+    tune    nprobe=2     recall=0.4035 qps=  11662.0
+    tune    nprobe=4     recall=0.4692 qps=   6863.3
+    tune    nprobe=8     recall=0.5153 qps=   3843.5
+    tune    nprobe=16    recall=0.5511 qps=   2113.4
+    tune    nprobe=32    recall=0.5781 qps=   1110.5
+    tune    nprobe=64    recall=0.5964 qps=    600.3
+    tune    nprobe=128   recall=0.6098 qps=    314.2
+    tune    nprobe=256   recall=0.6137 qps=    159.9
+    report nprobe=1     recall=0.3154 qps=  17800.3
+    report nprobe=2     recall=0.4018 qps=  11431.1
+    report nprobe=4     recall=0.4690 qps=   6966.8
+    report nprobe=8     recall=0.5174 qps=   3903.5
+    report nprobe=16    recall=0.5517 qps=   2146.2
+    report nprobe=32    recall=0.5758 qps=   1172.1
+    report nprobe=64    recall=0.5954 qps=    571.1
+    report nprobe=128   recall=0.6071 qps=    306.6
+    report nprobe=256   recall=0.6131 qps=    159.5
+Part 2 done. Results in /home/sriharinim/IIIT-Assignments/M26CS4.406-Assignment-3/results/results_part2.csv
+| dataset | index | QPS @ recall 0.90 | QPS @ recall 0.95 |
+|---|---|---|---|
+| glove | HNSW | 1,747 | 825 |
+| glove | IVF-Flat | 458 | 185 |
+| glove | IVF-PQ | not reached (max 0.613) | not reached (max 0.613) |
+| glove | Exact (flat) | 27 | 27 |
+| sift | HNSW | 11,861 | 7,858 |
+| sift | IVF-Flat | 2,240 | 1,136 |
+| sift | IVF-PQ | not reached (max 0.733) | not reached (max 0.733) |
+| sift | Exact (flat) | 26 | 26 |
+
+| dataset | index | config | search param | recall | build time (s) | index size (MB) | bytes/vector |
+|---|---|---|---|---|---|---|---|
+| glove | HNSW | M=32,efC=200 | efSearch=384 | 0.955 | 77.0 | 796 | 672 |
+| glove | IVF-Flat | nlist=1024 | nprobe=256 | 0.980 | 13.9 | 483 | 408 |
+| glove | IVF-PQ | nlist=1024,m=25 | nprobe=256 | 0.613 (max, <0.95) | 28.4 | 40 | 33 |
+| glove | Exact (flat) | IndexFlatL2 | - | 1.000 | ~0 | 473 | 400 |
+| sift | HNSW | M=16,efC=200 | efSearch=48 | 0.953 | 38.7 | 656 | 656 |
+| sift | IVF-Flat | nlist=4096 | nprobe=64 | 0.974 | 78.0 | 522 | 522 |
+| sift | IVF-PQ | nlist=1024,m=32 | nprobe=128 | 0.733 (max, <0.95) | 31.5 | 41 | 41 |
+| sift | Exact (flat) | IndexFlatL2 | - | 1.000 | ~0 | 512 | 512 |
+
+Analysis complete. Figures in /home/sriharinim/IIIT-Assignments/M26CS4.406-Assignment-3/results/figures, tables in /home/
+sriharinim/IIIT-Assignments/M26CS4.406-Assignment-3/results/tables
+Part 2 done.
+Running Part 3:
+=== sift n=100,000 ===
+  exact qps=289.0 recall=1.0000
+  build hnsw M=16,efC=200 ...
+    tune    efSearch=10    recall=0.7911 qps=  28451.4
+    tune    efSearch=16    recall=0.8770 qps=  25967.5
+    tune    efSearch=24    recall=0.9289 qps=  19644.7
+    tune    efSearch=32    recall=0.9551 qps=  14431.3
+    tune    efSearch=48    recall=0.9794 qps=   9278.4
+    report efSearch=10    recall=0.7999 qps=  26904.1
+    report efSearch=16    recall=0.8801 qps=  23306.0
+    report efSearch=24    recall=0.9329 qps=  16657.8
+    report efSearch=32    recall=0.9581 qps=  14434.7
+    report efSearch=48    recall=0.9814 qps=  11351.9
+  build ivf_flat nlist=1024 ...
+    tune    nprobe=1     recall=0.3143 qps=  48465.0
+    tune    nprobe=2     recall=0.4608 qps=  38358.9
+    tune    nprobe=4     recall=0.6199 qps=  27743.5
+    tune    nprobe=8     recall=0.7751 qps=  17220.0
+    tune    nprobe=16    recall=0.8898 qps=  10017.8
+    tune    nprobe=32    recall=0.9616 qps=   5746.8
+    tune    nprobe=64    recall=0.9917 qps=   3129.0
+    report nprobe=1     recall=0.3225 qps=  48584.9
+    report nprobe=2     recall=0.4787 qps=  37953.2
+    report nprobe=4     recall=0.6416 qps=  28359.2
+    report nprobe=8     recall=0.7867 qps=  17558.2
+    report nprobe=16    recall=0.8987 qps=   9998.5
+    report nprobe=32    recall=0.9652 qps=   5532.0
+    report nprobe=64    recall=0.9932 qps=   3100.5
+=== sift n=300,000 ===
+  exact qps=85.1 recall=1.0000
+  build hnsw M=16,efC=200 ...
+    tune    efSearch=10    recall=0.7537 qps=  25981.6
+    tune    efSearch=16    recall=0.8457 qps=  20205.6
+    tune    efSearch=24    recall=0.9043 qps=  15604.9
+    tune    efSearch=32    recall=0.9339 qps=  12050.3
+    tune    efSearch=48    recall=0.9637 qps=   9122.2
+    tune    efSearch=64    recall=0.9805 qps=   7642.5
+    report efSearch=10    recall=0.7580 qps=  26820.4
+    report efSearch=16    recall=0.8460 qps=  20445.2
+    report efSearch=24    recall=0.9028 qps=  15242.1
+    report efSearch=32    recall=0.9352 qps=  12311.5
+    report efSearch=48    recall=0.9664 qps=   9239.5
+    report efSearch=64    recall=0.9810 qps=   7207.8
+  build ivf_flat nlist=2048 ...
+    tune    nprobe=1     recall=0.2795 qps=  26384.8
+    tune    nprobe=2     recall=0.4217 qps=  20106.3
+    tune    nprobe=4     recall=0.5805 qps=  14193.1
+    tune    nprobe=8     recall=0.7225 qps=   9652.4
+    tune    nprobe=16    recall=0.8509 qps=   5860.4
+    tune    nprobe=32    recall=0.9357 qps=   3359.5
+    tune    nprobe=64    recall=0.9798 qps=   1787.8
+    report nprobe=1     recall=0.3017 qps=  26321.6
+    report nprobe=2     recall=0.4493 qps=  20079.3
+    report nprobe=4     recall=0.6064 qps=  14465.9
+    report nprobe=8     recall=0.7513 qps=   9356.3
+    report nprobe=16    recall=0.8672 qps=   5558.9
+    report nprobe=32    recall=0.9450 qps=   3401.3
+    report nprobe=64    recall=0.9838 qps=   1849.7
+=== sift n=1,000,000 ===
+  exact qps=25.4 recall=1.0000
+  build hnsw M=16,efC=200 ...
+    tune    efSearch=10    recall=0.7014 qps=  22485.8
+    tune    efSearch=16    recall=0.7937 qps=  16480.5
+    tune    efSearch=24    recall=0.8603 qps=  12582.0
+    tune    efSearch=32    recall=0.9016 qps=  10285.1
+    tune    efSearch=48    recall=0.9434 qps=   7395.1
+    tune    efSearch=64    recall=0.9644 qps=   5864.7
+    tune    efSearch=96    recall=0.9827 qps=   4051.0
+    report efSearch=10    recall=0.7308 qps=  20659.8
+    report efSearch=16    recall=0.8188 qps=  17766.9
+    report efSearch=24    recall=0.8828 qps=  12758.2
+    report efSearch=32    recall=0.9182 qps=  10802.0
+    report efSearch=48    recall=0.9533 qps=   7499.5
+    report efSearch=64    recall=0.9712 qps=   6213.8
+    report efSearch=96    recall=0.9861 qps=   4358.2
+  build ivf_flat nlist=4096 ...
+    tune    nprobe=1     recall=0.2659 qps=  11043.2
+    tune    nprobe=2     recall=0.3936 qps=   9442.0
+    tune    nprobe=4     recall=0.5466 qps=   7294.6
+    tune    nprobe=8     recall=0.6911 qps=   5160.3
+    tune    nprobe=16    recall=0.8171 qps=   3248.1
+    tune    nprobe=32    recall=0.9102 qps=   1907.1
+    tune    nprobe=64    recall=0.9682 qps=   1048.9
+    tune    nprobe=128   recall=0.9919 qps=    554.3
+    report nprobe=1     recall=0.2945 qps=  11100.8
+    report nprobe=2     recall=0.4348 qps=   9456.9
+    report nprobe=4     recall=0.5878 qps=   7386.6
+    report nprobe=8     recall=0.7291 qps=   5146.0
+    report nprobe=16    recall=0.8467 qps=   3239.6
+    report nprobe=32    recall=0.9271 qps=   1903.2
+    report nprobe=64    recall=0.9738 qps=   1036.4
+    report nprobe=128   recall=0.9934 qps=    554.7
+| index | n | QPS @ 0.95 | slowdown vs smallest n | search param | build time (s) | log-log slope |
+|---|---|---|---|---|---|---|
+| Exact (flat) | 100,000 | 289 | 1.0x | - | 0.0 | -1.06 |
+| Exact (flat) | 300,000 | 85 | 3.4x | - | 0.0 | -1.06 |
+| Exact (flat) | 1,000,000 | 25 | 11.4x | - | 0.0 | -1.06 |
+| HNSW | 100,000 | 15,117 | 1.0x | efSearch=32 | 3.1 | -0.29 |
+| HNSW | 300,000 | 10,743 | 1.4x | efSearch=48 | 10.2 | -0.29 |
+| HNSW | 1,000,000 | 7,761 | 1.9x | efSearch=48 | 39.6 | -0.29 |
+| IVF-Flat | 100,000 | 6,332 | 1.0x | nprobe=32 | 7.4 | -0.65 |
+| IVF-Flat | 300,000 | 3,146 | 2.0x | nprobe=64 | 17.4 | -0.65 |
+| IVF-Flat | 1,000,000 | 1,413 | 4.5x | nprobe=64 | 84.8 | -0.65 |
+
+Part 3 done. Results in /home/sriharinim/IIIT-Assignments/M26CS4.406-Assignment-3/results/results_part3.csv
+Part 3 done.
+Running Part 4:
+  build hnsw M=4,efC=200 ...
+  built in 4.0s, 561.3 B/vec
+    tune    efSearch=10    recall=0.1476 qps=  53991.7
+    tune    efSearch=16    recall=0.1878 qps=  41081.3
+    tune    efSearch=24    recall=0.2392 qps=  31467.1
+    tune    efSearch=32    recall=0.2978 qps=  24865.3
+    tune    efSearch=48    recall=0.3606 qps=  18688.6
+    tune    efSearch=64    recall=0.4244 qps=  14539.0
+    tune    efSearch=96    recall=0.5148 qps=   9907.6
+    tune    efSearch=128   recall=0.5820 qps=   7696.1
+    tune    efSearch=192   recall=0.6594 qps=   5820.7
+    tune    efSearch=256   recall=0.7088 qps=   4761.6
+    tune    efSearch=384   recall=0.7726 qps=   3303.9
+    tune    efSearch=512   recall=0.8116 qps=   2479.1
+    tune    efSearch=768   recall=0.8690 qps=   1558.1
+    tune    efSearch=1024  recall=0.8900 qps=   1128.8
+    report efSearch=10    recall=0.1459 qps=  58614.6
+    report efSearch=16    recall=0.1989 qps=  41802.5
+    report efSearch=24    recall=0.2512 qps=  30678.8
+    report efSearch=32    recall=0.2896 qps=  26535.6
+    report efSearch=48    recall=0.3538 qps=  19610.5
+    report efSearch=64    recall=0.4047 qps=  15535.2
+    report efSearch=96    recall=0.4945 qps=  10214.7
+    report efSearch=128   recall=0.5603 qps=   7728.6
+    report efSearch=192   recall=0.6484 qps=   5553.2
+    report efSearch=256   recall=0.7121 qps=   4322.1
+    report efSearch=384   recall=0.7868 qps=   3172.5
+    report efSearch=512   recall=0.8255 qps=   2331.2
+    report efSearch=768   recall=0.8754 qps=   1567.0
+    report efSearch=1024  recall=0.9029 qps=   1113.0
+  build hnsw M=8,efC=200 ...
+  built in 4.1s, 592.6 B/vec
+    tune    efSearch=10    recall=0.4222 qps=  40671.3
+    tune    efSearch=16    recall=0.5290 qps=  31731.5
+    tune    efSearch=24    recall=0.6348 qps=  23674.5
+    tune    efSearch=32    recall=0.7020 qps=  18217.7
+    tune    efSearch=48    recall=0.8112 qps=  14029.9
+    tune    efSearch=64    recall=0.8680 qps=  11204.3
+    tune    efSearch=96    recall=0.9332 qps=   8064.4
+    tune    efSearch=128   recall=0.9560 qps=   6951.8
+    tune    efSearch=192   recall=0.9774 qps=   5325.7
+    report efSearch=10    recall=0.4059 qps=  40264.8
+    report efSearch=16    recall=0.5193 qps=  29610.8
+    report efSearch=24    recall=0.6270 qps=  22596.3
+    report efSearch=32    recall=0.7094 qps=  18174.5
+    report efSearch=48    recall=0.8181 qps=  13464.6
+    report efSearch=64    recall=0.8766 qps=  10510.6
+    report efSearch=96    recall=0.9359 qps=   8050.1
+    report efSearch=128   recall=0.9676 qps=   6699.6
+    report efSearch=192   recall=0.9873 qps=   5158.0
+  build hnsw M=16,efC=200 ...
+  built in 4.0s, 656.3 B/vec
+    tune    efSearch=10    recall=0.6842 qps=  26905.1
+    tune    efSearch=16    recall=0.8034 qps=  21013.8
+    tune    efSearch=24    recall=0.8856 qps=  16536.4
+    tune    efSearch=32    recall=0.9374 qps=  12981.0
+    tune    efSearch=48    recall=0.9734 qps=  10790.6
+    report efSearch=10    recall=0.6950 qps=  25344.4
+    report efSearch=16    recall=0.8125 qps=  20486.0
+    report efSearch=24    recall=0.8969 qps=  16549.1
+    report efSearch=32    recall=0.9375 qps=  14525.7
+    report efSearch=48    recall=0.9773 qps=  11220.2
+  build hnsw M=32,efC=200 ...
+  built in 4.1s, 784.1 B/vec
+    tune    efSearch=10    recall=0.7912 qps=  20762.6
+    tune    efSearch=16    recall=0.8930 qps=  17252.5
+    tune    efSearch=24    recall=0.9468 qps=  14083.8
+    tune    efSearch=32    recall=0.9730 qps=  12215.9
+    report efSearch=10    recall=0.8057 qps=  21873.9
+    report efSearch=16    recall=0.8964 qps=  17329.5
+    report efSearch=24    recall=0.9496 qps=  14114.1
+    report efSearch=32    recall=0.9750 qps=  11731.6
+  build ivf_flat nlist=1024 ...
+  built in 8.2s, 522.7 B/vec
+    tune    nprobe=1     recall=0.4808 qps=  30313.3
+    tune    nprobe=2     recall=0.7640 qps=  22086.4
+    tune    nprobe=4     recall=0.9688 qps=  15715.9
+    tune    nprobe=8     recall=0.9998 qps=  10169.8
+    report nprobe=1     recall=0.4716 qps=  30926.4
+    report nprobe=2     recall=0.7483 qps=  22079.1
+    report nprobe=4     recall=0.9541 qps=  15852.0
+    report nprobe=8     recall=1.0000 qps=   9948.1
+  build ivf_pq nlist=1024,m=8 ...
+  built in 15.1s, 19.3 B/vec
+    tune    nprobe=1     recall=0.1396 qps=  32421.1
+    tune    nprobe=2     recall=0.1646 qps=  29632.4
+    tune    nprobe=4     recall=0.1728 qps=  25536.9
+    tune    nprobe=8     recall=0.1734 qps=  20363.4
+    report nprobe=1     recall=0.1340 qps=  32938.7
+    report nprobe=2     recall=0.1631 qps=  29564.8
+    report nprobe=4     recall=0.1773 qps=  25816.9
+    report nprobe=8     recall=0.1782 qps=  20038.6
+  build ivf_pq nlist=1024,m=16 ...
+  built in 17.2s, 27.3 B/vec
+    tune    nprobe=1     recall=0.2278 qps=  34616.8
+    tune    nprobe=2     recall=0.2866 qps=  28585.0
+    tune    nprobe=4     recall=0.3190 qps=  22632.6
+    tune    nprobe=8     recall=0.3216 qps=  16395.3
+    tune    nprobe=16    recall=0.3216 qps=  10343.9
+    report nprobe=1     recall=0.2279 qps=  25089.1
+    report nprobe=2     recall=0.2871 qps=  28981.0
+    report nprobe=4     recall=0.3206 qps=  22671.3
+    report nprobe=8     recall=0.3269 qps=  16584.9
+    report nprobe=16    recall=0.3269 qps=  10498.2
+  build ivf_pq nlist=1024,m=32 ...
+  built in 25.0s, 43.3 B/vec
+    tune    nprobe=1     recall=0.3656 qps=  30085.8
+    tune    nprobe=2     recall=0.5088 qps=  23718.1
+    tune    nprobe=4     recall=0.5798 qps=  17664.6
+    tune    nprobe=8     recall=0.5896 qps=  11907.2
+    tune    nprobe=16    recall=0.5898 qps=   6683.3
+    report nprobe=1     recall=0.3579 qps=  29876.9
+    report nprobe=2     recall=0.4947 qps=  23589.5
+    report nprobe=4     recall=0.5785 qps=  17150.2
+    report nprobe=8     recall=0.5938 qps=  11140.2
+    report nprobe=16    recall=0.5938 qps=   6644.8
+  build ivf_pq nlist=1024,m=64 ...
+  built in 41.8s, 75.3 B/vec
+    tune    nprobe=1     recall=0.4596 qps=  25304.7
+    tune    nprobe=2     recall=0.6986 qps=  18143.8
+    tune    nprobe=4     recall=0.8380 qps=  11775.2
+    tune    nprobe=8     recall=0.8558 qps=   7052.8
+    tune    nprobe=16    recall=0.8560 qps=   3867.8
+    report nprobe=1     recall=0.4497 qps=  25093.8
+    report nprobe=2     recall=0.6859 qps=  17408.2
+    report nprobe=4     recall=0.8309 qps=  11294.1
+    report nprobe=8     recall=0.8571 qps=   6674.1
+    report nprobe=16    recall=0.8571 qps=   3773.8
+  build ivf_pq nlist=1024,m=128 ...
+  built in 95.3s, 139.3 B/vec
+    tune    nprobe=1     recall=0.4772 qps=  14342.5
+    tune    nprobe=2     recall=0.7510 qps=   9833.1
+    tune    nprobe=4     recall=0.9394 qps=   6238.7
+    tune    nprobe=8     recall=0.9642 qps=   3672.1
+    tune    nprobe=16    recall=0.9644 qps=   2004.2
+    report nprobe=1     recall=0.4673 qps=  14325.5
+    report nprobe=2     recall=0.7348 qps=   9563.1
+    report nprobe=4     recall=0.9273 qps=   6213.5
+    report nprobe=8     recall=0.9669 qps=   3727.8
+    report nprobe=16    recall=0.9669 qps=   2030.5
+| budget (B/vec) | setting | index | configs that fit | best recall | QPS @ 0.90 | QPS @ 0.95 |
+|---|---|---|---|---|---|---|
+| 1000 | control | HNSW | M=16,efC=200, M=32,efC=200, M=4,efC=200, M=8,efC=200 | 0.987 | 16,385 | 14,073 |
+| 1000 | control | IVF-Flat | nlist=1024 | 1.000 | 17,295 | 15,957 |
+| 1000 | control | IVF-PQ | nlist=1024,m=128, nlist=1024,m=16, nlist=1024,m=32, nlist=1024,m=64, nlist=1024,m=8 | 0.967 |
+ 6,389 | 4,636 |
+| 600 | limit | HNSW | M=4,efC=200, M=8,efC=200 | 0.987 | 9,461 | 7,419 |
+| 600 | limit | IVF-Flat | nlist=1024 | 1.000 | 17,295 | 15,957 |
+| 600 | limit | IVF-PQ | nlist=1024,m=128, nlist=1024,m=16, nlist=1024,m=32, nlist=1024,m=64, nlist=1024,m=8 | 0.967 | 6,
+389 | 4,636 |
+| 150 | limit | HNSW | none (smallest is 561 B/vec) | - | - | - |
+| 150 | limit | IVF-Flat | none (smallest is 523 B/vec) | - | - | - |
+| 150 | limit | IVF-PQ | nlist=1024,m=128, nlist=1024,m=16, nlist=1024,m=32, nlist=1024,m=64, nlist=1024,m=8 | 0.967 | 6,
+389 | 4,636 |
+| 50 | limit | HNSW | none (smallest is 561 B/vec) | - | - | - |
+| 50 | limit | IVF-Flat | none (smallest is 523 B/vec) | - | - | - |
+| 50 | limit | IVF-PQ | nlist=1024,m=16, nlist=1024,m=32, nlist=1024,m=8 | 0.594 | not reached | not reached |
+
+Part 4 done. Results in /home/sriharinim/IIIT-Assignments/M26CS4.406-Assignment-3/results/results_part4.csv
+Part 4 done.
+All tasks completed successfully!

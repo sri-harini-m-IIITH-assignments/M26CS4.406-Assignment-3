@@ -88,7 +88,7 @@ def run(cfg, out):
         gc.collect()
 
 
-def analyze(out, suffix):
+def analyze(out, suffix, results_dir):
     df = pd.read_csv(out)
     df = df[(df["part"] == 4) & (df["split"] == "report")]
     rows, curves = [], {}
@@ -116,7 +116,7 @@ def analyze(out, suffix):
             rows.append(row)
 
     tab = pd.DataFrame(rows)
-    an.save_table(tab, os.path.join(RESULTS_DIR, "tables" + suffix), "memory_budget")
+    an.save_table(tab, os.path.join(results_dir, "tables" + suffix), "memory_budget")
     print(an.md_table(tab))
 
     fig, axes = plt.subplots(1, 2, figsize=(8.6, 3.6))
@@ -142,7 +142,7 @@ def analyze(out, suffix):
     fig.suptitle("Own data (Gaussian mixture): gaps mean the index does not fit or never reaches the target", fontsize=9)
     fig.tight_layout()
     
-    figdir = os.path.join(RESULTS_DIR, "figures" + suffix)
+    figdir = os.path.join(results_dir, "figures" + suffix)
     os.makedirs(figdir, exist_ok=True)
     for ext in ("png", "pdf"):
         fig.savefig(os.path.join(figdir, f"memory_budget.{ext}"), dpi=200)
@@ -152,13 +152,16 @@ def analyze(out, suffix):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--quick", action="store_true")
-    ap.add_argument("--analyze-only", action="store_true")
     args = ap.parse_args()
     cfg = QUICK if args.quick else FULL
-    out = os.path.join(RESULTS_DIR, f"results_part4{cfg['suffix']}.csv")
-    if not args.analyze_only:
-        run(cfg, out)
-    analyze(out, cfg["suffix"])
+    results_dir = os.path.join(ROOT, "results_quick") if args.quick else RESULTS_DIR
+    out = os.path.join(results_dir, f"results_part4{cfg['suffix']}.csv")
+    run(cfg, out)
+    analyze(out, cfg["suffix"], results_dir)
+    merged = os.path.join(results_dir, f"results{cfg['suffix']}.csv")
+    parts = [pd.read_csv(merged)] if os.path.exists(merged) else []
+    parts.append(pd.read_csv(out))
+    pd.concat(parts, ignore_index=True).to_csv(merged, index=False)
     print(f"Part 4 done. Results in {out}")
 
 

@@ -100,7 +100,8 @@ def main():
         raise SystemExit(0)
 
     n_train = 100_000 if args.quick else None
-    os.makedirs("results", exist_ok=True)
+    results_dir = "results_quick" if args.quick else "results"
+    os.makedirs(results_dir, exist_ok=True)
 
     rows = []
     for name in DATASETS:
@@ -115,12 +116,13 @@ def main():
             rec = check_exact_results(name, train, test, gt)
 
         qps_single, qps_batch = time_exact_search(index, test[5000:])
-        rows.append(dict(dataset=name, index="exact", n=len(train),
+        rows.append(dict(part=1, dataset=name, index="exact", n=len(train),
                            recall_vs_file=rec,
                            qps_single=qps_single, qps_batch=qps_batch))
 
-    out = "results/results_part1_quick.csv" if args.quick else "results/results_part1.csv"
+    out = os.path.join(results_dir, "results_part1_quick.csv" if args.quick else "results_part1.csv")
     pd.DataFrame(rows).to_csv(out, index=False)
+    print(f"Part 1 done. Results in {out}")
 
 if __name__ == "__main__":
     main()

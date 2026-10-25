@@ -1,6 +1,6 @@
 numpy
 h5py
-faiss-gpu
-hnswlib
+faiss-cpu
 matplotlib
+pandas
 pytest

@@ -14,7 +14,7 @@ from faiss_exact import DATASETS, dataset_loader, recall_at_k
 
 RESULTS_DIR = os.path.join(ROOT, "results")
 RESULTS_PATH = os.path.join(RESULTS_DIR, "results_part2.csv")
-QUICK_PATH = os.path.join(RESULTS_DIR, "results_part2_quick.csv")
+QUICK_PATH = os.path.join(ROOT, "results_quick", "results_part2_quick.csv")
 
 K = 10
 STOP_RECALL = 0.97
@@ -207,7 +207,7 @@ def main():
             del index, keepalive
             gc.collect()
 
-    print(f"Finished. Results in {out}")
+    print(f"Part 2 done. Results in {out}")
 
 
 if __name__ == "__main__":

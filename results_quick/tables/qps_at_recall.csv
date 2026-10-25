@@ -1,0 +1,9 @@
+dataset,index,QPS @ recall 0.90,QPS @ recall 0.95
+glove,HNSW,"4,585","2,614"
+glove,IVF-Flat,"2,382","1,290"
+glove,IVF-PQ,not reached (max 0.615),not reached (max 0.615)
+glove,Exact (flat),314,314
+sift,HNSW,"25,338","17,076"
+sift,IVF-Flat,"9,930","5,822"
+sift,IVF-PQ,not reached (max 0.774),not reached (max 0.774)
+sift,Exact (flat),271,271

@@ -1,0 +1,3 @@
+part,dataset,index,n,recall_vs_file,qps_single,qps_batch
+1,sift,exact,100000,,270.88642554285474,831.0557323259279
+1,glove,exact,100000,,314.126784385663,1061.7924550321998

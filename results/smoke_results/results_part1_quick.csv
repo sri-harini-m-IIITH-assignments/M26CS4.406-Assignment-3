@@ -1,3 +1,0 @@
-dataset,index,n,recall_vs_file,qps_single,qps_batch
-sift,exact,100000,,250.52706138677206,800.6377665573864
-glove,exact,100000,,329.1635532334611,933.1917736293964
